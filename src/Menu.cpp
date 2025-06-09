@@ -46,7 +46,10 @@ void lihatStatusTempatSampah() {
 }
 
 void lihatAntrianNotifikasi() {
-   cout << "Menampilkan antrian notifikasi...\n";
+   updateSensorLevels();          // update sensor dulu
+   updateSemuaHistori();
+   checkTrashNotification();      // cek dan isi antrian
+   displayQueue();                // tampilkan isi antrian
 }
 void lihatRuteOptimal() {
    cout << "Menghitung rute pengambilan optimal...\n";
