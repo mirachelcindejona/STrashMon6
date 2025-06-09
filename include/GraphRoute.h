@@ -15,6 +15,8 @@ void createGraph();
 void inputGraph();
 void tampilkanGraph();
 void shortestPath(int awal, int akhir);
-void ruteKelilingPickup(); // belom dibuat functionnya (kalo udah komen ini hapus)
+void simpanGraphKeFile();
+void bacaGraphDariFile();
+void ruteKelilingPickup();
 
 #endif
