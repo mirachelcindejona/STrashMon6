@@ -1,0 +1,5 @@
+KTR;Kantor Petugas
+TS1;Depan Sekolah
+TS2;Taman Belakang
+TS3;Halte Utama
+TS4;Samping Kantin
