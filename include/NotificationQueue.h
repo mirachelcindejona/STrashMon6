@@ -19,5 +19,8 @@ int isFullQueue();
 void insertQueue(string data);
 void deleteQueue();
 void displayQueue();
+void checkTrashNotification();
+void simpanQueueKeFile();
+void bacaQueueDariFile();
 
 #endif
