@@ -34,6 +34,48 @@ void tampilkanGraph() {
    }
 }
 
+void simpanGraphKeFile() {
+   ofstream file("data/jarak.txt");
+   if (file.is_open()) {
+      for (int i = 0; i < jumlahNode; i++) {
+         for (int j = 0; j < jumlahNode; j++) {
+               file << jarak[i][j];
+               if (j < jumlahNode - 1) file << " ";
+         }
+         file << "\n";
+      }
+      file.close();
+   }
+}
+
+void bacaGraphDariFile() {
+   ifstream file("data/jarak.txt");
+   if (file.is_open()) {
+      for (int i = 0; i < jumlahNode; i++) {
+         for (int j = 0; j < jumlahNode; j++) {
+               file >> jarak[i][j];
+         }
+      }
+      file.close();
+      sudahInput = true;
+   }
+
+   ifstream temp("data/tempat.txt");
+   if (temp.is_open()) {
+      string line;
+      int index = 0;
+      while (getline(temp, line) && index < jumlahNode) {
+         stringstream ss(line);
+         string id, lokasi;
+         getline(ss, id, ';');
+         getline(ss, lokasi);
+         namaTempat[index] = lokasi;
+         index++;
+      }
+      temp.close();
+   }
+}
+
 void inputGraph() {
    bacaGraphDariFile();
    if (sudahInput) {
@@ -105,3 +147,51 @@ void shortestPath(int awal, int akhir) {
    cout << "\nTotal Jarak: " << tempVal[akhir] << " meter\n";
 }
 
+void ruteKelilingPickup() {
+   cout << "\n=== Rute Pengambilan Sampah Otomatis dari Kantor ===\n";
+   vector<int> titikDiambil;
+   for (int i = 1; i < jumlahNode; i++) {
+      if (namaTempat[i] == "") continue;
+      string status = getStatusIndikator(sensorList[i].level);
+      if (status == "Merah" || status == "Kuning") {
+         titikDiambil.push_back(i);
+      }
+   }
+
+   if (titikDiambil.empty()) {
+      cout << "Tidak ada tempat sampah yang perlu diambil.\n";
+      return;
+   }
+
+   int current = 0;
+   vector<bool> visited(jumlahNode, false);
+   visited[0] = true;
+   int total = 0;
+
+   cout << "Rute: " << namaTempat[0];
+   while (!titikDiambil.empty()) {
+      int terdekat = -1;
+      int jarakMin = 9999;
+      for (int i = 0; i < titikDiambil.size(); i++) {
+         int target = titikDiambil[i];
+         if (!visited[target] && jarak[current][target] > 0 && jarak[current][target] < jarakMin) {
+               terdekat = target;
+               jarakMin = jarak[current][target];
+         }
+      }
+      if (terdekat == -1) break;
+
+      total += jarakMin;
+      visited[terdekat] = true;
+      cout << " -> " << namaTempat[terdekat];
+      current = terdekat;
+      titikDiambil.erase(remove(titikDiambil.begin(), titikDiambil.end(), terdekat), titikDiambil.end());
+   }
+
+   if (jarak[current][0] > 0) {
+      total += jarak[current][0];
+      cout << " -> " << namaTempat[0];
+   }
+
+   cout << "\nTotal jarak rute: " << total << " meter\n";
+}
