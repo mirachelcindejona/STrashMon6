@@ -40,7 +40,9 @@ void heading() {
 }
 
 void lihatStatusTempatSampah() {
-   cout << "Menampilkan status semua tempat sampah...\n";
+   updateSensorLevels();
+   updateSemuaHistori();
+   displaySensorStatus();
 }
 
 void lihatAntrianNotifikasi() {
