@@ -25,6 +25,6 @@ void createHistori();
 void pushHistori(int index, HistoriData newData);
 void displayHistori(int index);
 string getCurrentTime();
-string getCurrentdate();
+string getCurrentDate();
 
 #endif
