@@ -24,6 +24,9 @@ extern HistoriStack historiList[maxLokasi];
 void createHistori();
 void pushHistori(int index, HistoriData newData);
 void displayHistori(int index);
+void analisisHistori(int index);
+void simpanHistoriKeFile();
+void bacaHistoriDariFile();
 string getCurrentTime();
 string getCurrentDate();
 
