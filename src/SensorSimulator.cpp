@@ -1,4 +1,5 @@
 #include "../include/SensorSimulator.h"
+#include "../include/TrashHistoryStack.h"
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -64,3 +65,12 @@ void simpanTempatKeFile() {
    }
 }
 
+void updateSemuaHistori() {
+   for (int i = 1; i < sensorList.size(); i++) {
+      HistoriData data;
+      data.level = sensorList[i].level;
+      data.status = getStatusIndikator(data.level);
+      data.waktu = getCurrentTime();
+      pushHistori(i, data);
+   }
+}
