@@ -24,7 +24,7 @@ vector<TrashBin> sensorList = {
 void updateSensorLevels() {
    srand(time(0));
    for (auto& bin : sensorList) {
-      float naik = (rand() % 9 + 5); // +1% sampai +3%
+      float naik = (rand() % 9 + 1); // +1% sampai +9%
       bin.level += naik;
       if (bin.level > 100.0) bin.level = 100.0;
    }

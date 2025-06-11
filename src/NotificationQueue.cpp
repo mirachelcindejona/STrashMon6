@@ -56,7 +56,7 @@ void displayQueue() {
 void checkTrashNotification() {
    for (int i = 0; i < sensorList.size(); i++) {
       string status = getStatusIndikator(sensorList[i].level);
-      if (status == "Merah" || status == "Kuning") {
+      if (status == "Merah") {
          string pesan = "[" + sensorList[i].id + "] " + sensorList[i].location +
                         " status: " + status + " (" + to_string((int)sensorList[i].level) + "%)";
          

@@ -40,13 +40,9 @@ void heading() {
 }
 
 void lihatStatusTempatSampah() {
-   updateSensorLevels();
-   updateSemuaHistori();
    displaySensorStatus();
 }
 void lihatAntrianNotifikasi() {
-   updateSensorLevels();          // update sensor dulu
-   updateSemuaHistori();
    checkTrashNotification();      // cek dan isi antrian
    displayQueue();                // tampilkan isi antrian
 }
