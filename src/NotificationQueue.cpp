@@ -54,17 +54,28 @@ void displayQueue() {
 }
 
 void checkTrashNotification() {
-   createQueue();
    for (int i = 0; i < sensorList.size(); i++) {
       string status = getStatusIndikator(sensorList[i].level);
       if (status == "Merah" || status == "Kuning") {
          string pesan = "[" + sensorList[i].id + "] " + sensorList[i].location +
                         " status: " + status + " (" + to_string((int)sensorList[i].level) + "%)";
-         insertQueue(pesan);
+         
+         // Hindari duplikasi
+         bool sudahAda = false;
+         for (int j = 0; j < notif.top; j++) {
+            if (notif.isi[j] == pesan) {
+               sudahAda = true;
+               break;
+            }
+         }
+
+         if (!sudahAda) {
+            insertQueue(pesan);
+         }
       }
    }
-   simpanQueueKeFile();
 }
+
 
 void simpanQueueKeFile() {
    ofstream file("data/notifikasi.txt");

@@ -185,37 +185,37 @@ void resetData() {
       if (!(cin >> pilihan)) {
          cin.clear();
          cin.ignore(numeric_limits<streamsize>::max(), '\n');
-         cout << "Input tidak valid. Masukkan angka.\n";
+         cout << "\n❌ Input tidak valid. Masukkan angka.\n";
          continue;
       }
 
       char konfirmasi;
       switch (pilihan) {
          case 1:
-            cout << "Konfirmasi reset semua? (y/n): ";
+            cout << "Konfirmasi reset semua data? (y/n): ";
             cin >> konfirmasi;
             if (konfirmasi == 'y' || konfirmasi == 'Y') {
                resetSemuaData();
             } else {
-               cout << "Dibatalkan.\n";
+               cout << "❌ Reset semua dibatalkan.\n";
             }
             break;
          case 2:
-            cout << "Konfirmasi reset queue? (y/n): ";
+            cout << "Konfirmasi reset queue notifikasi? (y/n): ";
             cin >> konfirmasi;
             if (konfirmasi == 'y' || konfirmasi == 'Y') {
                resetQueueData();
             } else {
-               cout << "Dibatalkan.\n";
+               cout << "❌ Reset queue dibatalkan.\n";
             }
             break;
          case 3:
-            cout << "Konfirmasi reset histori? (y/n): ";
+            cout << "Konfirmasi reset histori stack? (y/n): ";
             cin >> konfirmasi;
             if (konfirmasi == 'y' || konfirmasi == 'Y') {
                resetHistoryData();
             } else {
-               cout << "Dibatalkan.\n";
+               cout << "❌ Reset histori dibatalkan.\n";
             }
             break;
          case 4:
@@ -224,14 +224,14 @@ void resetData() {
             if (konfirmasi == 'y' || konfirmasi == 'Y') {
                resetJarakData();
             } else {
-               cout << "Dibatalkan.\n";
+               cout << "❌ Reset jarak dibatalkan.\n";
             }
             break;
          case 0:
             kembali = true;
             break;
          default:
-            cout << "Pilihan tidak valid.\n";
+            cout << "❌ Pilihan tidak valid.\n";
       }
 
       if (!kembali) {
@@ -240,6 +240,14 @@ void resetData() {
          cin.get();
       }
    }
+}
+
+void simulasiUpdateSensor() {
+   updateSensorLevels();
+   updateSemuaHistori();
+   simpanHistoriKeFile();
+   cout << "Sensor telah diperbarui dan histori tercatat.\n";
+   displaySensorStatus();
 }
 
 void menuUtama() {
@@ -254,6 +262,7 @@ void menuUtama() {
       cout << "3. Lihat rute pengambilan optimal\n";
       cout << "4. Cek histori tempat sampah\n";
       cout << "5. Reset data\n";
+      cout << "6. Simulasi Update Sensor (1x)\n";
       cout << "0. Keluar\n";
       cout << "Pilih menu: ";
 
@@ -287,6 +296,10 @@ void menuUtama() {
                clearScreen();
                resetData();
                break;
+         case 6:
+            clearScreen();
+            simulasiUpdateSensor();
+            break;
          case 0:
                cout << "Keluar dari program.\n";
                aktif = false;

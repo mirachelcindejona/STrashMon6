@@ -1,5 +1,9 @@
 KTR;Kantor Petugas
-TS1;Depan Sekolah
-TS2;Taman Belakang
-TS3;Halte Utama
-TS4;Samping Kantin
+RM1;Rumah Ica
+RM2;Rumah Rere
+RM3;Rumah Rakel
+RM4;Rumah Ipul
+RM5;Rumah Nugi
+RM6;Rumah Rafli
+RM7;Rumah Vina
+RM8;Rumah Marwa

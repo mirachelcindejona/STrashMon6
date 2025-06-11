@@ -16,5 +16,6 @@ int main() {
    simpanHistoriKeFile();  
    heading();                    // tampilkan header boot
    menuUtama();                  // baru tampilkan menu
+   simpanQueueKeFile();
    return 0;
 }

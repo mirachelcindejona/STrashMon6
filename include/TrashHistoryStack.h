@@ -9,7 +9,7 @@ const int maxLokasi = 10; // termasuk kantor dan tempat sampah
 
 struct HistoriData {
     string waktu;
-    string tanggal;
+    // string tanggal;
     float level;
     string status;
 };
@@ -28,6 +28,6 @@ void analisisHistori(int index);
 void simpanHistoriKeFile();
 void bacaHistoriDariFile();
 string getCurrentTime();
-string getCurrentDate();
+// string getCurrentDate();
 
 #endif
