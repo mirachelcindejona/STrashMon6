@@ -153,7 +153,7 @@ void ruteKelilingPickup() {
    for (int i = 1; i < jumlahNode; i++) {
       if (namaTempat[i] == "") continue;
       string status = getStatusIndikator(sensorList[i].level);
-      if (status == "Merah" || status == "Kuning") {
+      if (status == "Merah") {
          titikDiambil.push_back(i);
       }
    }
