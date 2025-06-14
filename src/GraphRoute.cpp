@@ -6,6 +6,7 @@
 #include <sstream>
 #include <vector>
 #include <algorithm>
+#include <limits>
 using namespace std;
 
 int jarak[jumlahNode][jumlahNode];
@@ -90,14 +91,26 @@ void inputGraph() {
       if (namaTempat[i] == "") continue;
       for (int j = i + 1; j < jumlahNode; j++) {
          if (namaTempat[j] == "") continue;
-         cout << "Jarak dari " << namaTempat[i] << " ke " << namaTempat[j] << " (meter): ";
-         cin >> jarak[i][j];
-         jarak[j][i] = jarak[i][j];
+
+         int inputJarak;
+         while (true) {
+            cout << "Jarak dari " << namaTempat[i] << " ke " << namaTempat[j] << " (meter): ";
+            if (cin >> inputJarak && inputJarak >= 0) {
+               jarak[i][j] = inputJarak;
+               jarak[j][i] = inputJarak;
+               break;
+            } else {
+               cout << "Input tidak valid. Harap masukkan angka >= 0.\n";
+               cin.clear();
+               cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+         }
       }
    }
    simpanGraphKeFile();
    cout << "\nData jarak berhasil disimpan.\n";
 }
+
 
 void shortestPath(int awal, int akhir) {
    int tempVal[jumlahNode], path[jumlahNode], previous[jumlahNode];

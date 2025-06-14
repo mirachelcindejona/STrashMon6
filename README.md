@@ -40,6 +40,8 @@ Proyek ini merupakan implementasi dari **Ujian Akhir Semester 2** dengan menggab
 - Breadboard, resistor, kabel jumper
 - Buzzer (opsional)
 
+**Link Proyek Wokwi:** [Klik untuk membuka simulasi](https://wokwi.com/projects/433469030091109377)
+
 ### 🧠 Struktur Data yang Diimplementasikan
 
 - **Stack** untuk histori kepenuhan (maks 5 data)
